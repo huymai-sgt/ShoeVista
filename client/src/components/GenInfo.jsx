@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 
 const GenInfo = () => {
@@ -50,7 +51,7 @@ const GenInfo = () => {
 
 export default GenInfo;
 
-export const Brands = () => {
+export const Brands = ({ title = "Top Brands" }) => {
   const navigate = useNavigate();
 
   const data = [
@@ -62,7 +63,7 @@ export const Brands = () => {
 
   return (
     <div className="flex flex-col items-center my-16 w-full">
-      <p className="child:ring-white font-bold mb-6">Top Brands</p>
+      <p className="child:ring-white font-bold mb-6">{title}</p>
       <div className="flex flex-wrap justify-center">
         {data.map((elem, id) => (
           <div
@@ -89,4 +90,8 @@ export const Brands = () => {
       </div>
     </div>
   );
+};
+
+Brands.propTypes = {
+  title: PropTypes.string,
 };
